@@ -31,92 +31,26 @@ public class AccountTest {
             System.out.println();
         } while(choice != 5);
     }
-
-    
-    public static int accountMenu(Scanner keyboard) {
-        System.out.println("Select Account Type");
-        System.out.println("1. Checking Account");
-        System.out.println("2. Savings Account");
+	
+	//1st method menu for user
+    public static int menu(Scanner keyboard) {
+        System.out.println("Bank Account Menu");
+        System.out.println("1. Create New Account");
+        System.out.println("2. Deposit Funds");
+        System.out.println("3. Withdraw Funds");
+        System.out.println("4. Apply Interest");
+        System.out.println("5. Quit");
 
         int choice;
+
         do {
             System.out.print("Enter choice: ");
             choice = keyboard.nextInt();
-        }while(choice < 1 || choice > 2);
-        
+        } while(choice < 1 || choice > 5);
+
         return choice;
-    } 
-
-    public static int searchAccount(Account accounts [], int count, int accountNumber) {
-
-        for(int i=0; i<count; i++) {
-            if(accounts[i].getAccountNumber() == accountNumber) {
-                return i;
-            }
-        }
-
-        return -1; 
-    }
-
-    
-    public static void doDeposit(Account accounts [], int count, Scanner keyboard) {
-        // Get the account number
-        System.out.print("\nPlease enter account number: ");
-        int accountNumber = keyboard.nextInt();
-
-        // searching for acc
-        int index = searchAccount(accounts, count, accountNumber);
-
-        if(index >= 0) {
-            // Amount
-            System.out.print("Please enter Deposit Amount: ");
-            double amount = keyboard.nextDouble();
-
-            accounts[index].deposit(amount);
-        } else {
-            System.out.println("No account exist with AccountNumber: " + accountNumber);
-        }
-    }
-
-    public static void doWithdraw(Account accounts [], int count, Scanner keyboard) {
-        // Get the acc num
-        System.out.print("\nPlease enter account number: ");
-        int accountNumber = keyboard.nextInt();
-
-        // search for account
-        int index = searchAccount(accounts, count, accountNumber);
-
-        if(index >= 0) {
-            // Amount
-            System.out.print("Please enter Withdraw Amount: ");
-            double amount = keyboard.nextDouble();
-            accounts[index].withdraw(amount);
-        } 
-        else {
-            System.out.println("No account exist with AccountNumber: " + accountNumber);
-        }
-    }
-
-    public static void applyInterest(Account accounts [], int count, Scanner keyboard) {
-        // Get the acc num
-        System.out.print("\nPlease enter account number: ");
-        int accountNumber = keyboard.nextInt();
-
-        // search for acc
-        int index = searchAccount(accounts, count, accountNumber);
-
-        if(index >= 0) {
-            
-            // instance of savings account
-            if(accounts[index] instanceof SavingsAccount) {
-                ((SavingsAccount)accounts[index]).applyInterest();
-            }
-        } else {
-            System.out.println("No account exist with AccountNumber: " + accountNumber);
-        }
-    }
-
-    
+	}
+    //2nd method
     public static Account createAccount(Scanner keyboard) {
 
         Account account = null; 
@@ -139,23 +73,90 @@ public class AccountTest {
         return account;
     }
 
-   //menu for user
-    public static int menu(Scanner keyboard) {
-        System.out.println("Bank Account Menu");
-        System.out.println("1. Create New Account");
-        System.out.println("2. Deposit Funds");
-        System.out.println("3. Withdraw Funds");
-        System.out.println("4. Apply Interest");
-        System.out.println("5. Quit");
+    //3rd method
+    public static int accountMenu(Scanner keyboard) {
+        System.out.println("Select Account Type");
+        System.out.println("1. Checking Account");
+        System.out.println("2. Savings Account");
 
         int choice;
-
         do {
             System.out.print("Enter choice: ");
             choice = keyboard.nextInt();
-        } while(choice < 1 || choice > 5);
-
+        }while(choice < 1 || choice > 2);
+        
         return choice;
-	}
+    } 
+    //4th method
+    public static int searchAccount(Account accounts [], int count, int accountNumber) {
 
+        for(int i=0; i<count; i++) {
+            if(accounts[i].getAccountNumber() == accountNumber) {
+                return i;
+            }
+        }
+
+        return -1; 
+    }
+
+    //5th method
+    
+    public static void doDeposit(Account accounts [], int count, Scanner keyboard) {
+        // Get the account number
+        System.out.print("\nPlease enter account number: ");
+        int accountNumber = keyboard.nextInt();
+
+        // searching for acc
+        int index = searchAccount(accounts, count, accountNumber);
+
+        if(index >= 0) {
+            // Amount
+            System.out.print("Please enter Deposit Amount: ");
+            double amount = keyboard.nextDouble();
+
+            accounts[index].deposit(amount);
+        } else {
+            System.out.println("No account exist with AccountNumber: " + accountNumber);
+        }
+    }
+
+    //5th method
+    public static void doWithdraw(Account accounts [], int count, Scanner keyboard) {
+        // Get the acc num
+        System.out.print("\nPlease enter account number: ");
+        int accountNumber = keyboard.nextInt();
+
+        // search for account
+        int index = searchAccount(accounts, count, accountNumber);
+
+        if(index >= 0) {
+            // Amount
+            System.out.print("Please enter Withdraw Amount: ");
+            double amount = keyboard.nextDouble();
+            accounts[index].withdraw(amount);
+        } 
+        else {
+            System.out.println("No account exist with AccountNumber: " + accountNumber);
+        }
+    }
+
+    //6th method
+    public static void applyInterest(Account accounts [], int count, Scanner keyboard) {
+        // Get the acc num
+        System.out.print("\nPlease enter account number: ");
+        int accountNumber = keyboard.nextInt();
+
+        // search for acc
+        int index = searchAccount(accounts, count, accountNumber);
+
+        if(index >= 0) {
+            
+            // must be instance of savings account
+            if(accounts[index] instanceof SavingsAccount) {
+                ((SavingsAccount)accounts[index]).applyInterest();
+            }
+        } else {
+            System.out.println("No account exist with AccountNumber: " + accountNumber);
+        }
+    }
 }

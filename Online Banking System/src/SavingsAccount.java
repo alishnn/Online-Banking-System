@@ -18,11 +18,11 @@ public class SavingsAccount extends Account {
     public double getInterestRate() {
         return this.interestRate;
     }
-
+    //setter
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
     }
-
+    //Calculating interest
     public double calcInterest() {
         return balance * interestRate;
     }
@@ -38,8 +38,8 @@ public class SavingsAccount extends Account {
         
         if (amount > 0) {
             balance += amount;
-            System.out.printf("Amount %.2f deposited%n", amount);
-            System.out.printf("Current Balance is: %.2f%n", balance);
+            System.out.printf("Amount %.2f deposited\n", amount);
+            System.out.printf("Current Balance is: %.2f\n", balance);
 
         } else {
             System.out.println("A negative amount cannot be deposited");
@@ -52,9 +52,9 @@ public class SavingsAccount extends Account {
         if (amount > 0) {
             // Check suffi bal
             if ((amount) <= balance) {
-                System.out.printf("Amount of %.2f withdrawn from Account%n", amount);
+                System.out.printf("Amount of %.2f withdrawn from Account\n", amount);
                 balance -= amount;
-                System.out.printf("Current Balance is: %.2f%n", balance);
+                System.out.printf("Current Balance is: %.2f\n", balance);
             }
         } else {
             System.out.println("Negative amount cannot be withdrawn!");

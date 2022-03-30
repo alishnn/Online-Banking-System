@@ -1,6 +1,6 @@
 
 public class CheckingAccount extends Account {
-	
+	//iniializing fee
     private static double FEE = 2.5;
 
     // default C
@@ -9,7 +9,7 @@ public class CheckingAccount extends Account {
     }
 
     //param C
-     
+     //var fee
     public CheckingAccount(int accountNumber, double fee) {
         super(accountNumber);
         FEE = fee;
@@ -21,11 +21,11 @@ public class CheckingAccount extends Account {
         
         if( amount > 0) {
             balance += amount;
-            System.out.printf("Amount %.2f deposited%n", amount);
+            System.out.printf("Amount %.2f deposited\n", amount);
 
             balance -= FEE;
-            System.out.printf("Fee %.2f Applied%n", FEE);
-            System.out.printf("Current Balance is: %.2f%n", balance);
+            System.out.printf("Fee %.2f Applied\n", FEE);
+            System.out.printf("Current Balance is: %.2f\n", balance);
             
         } else {
             System.out.println("A negative amount cannot be deposited");
@@ -41,11 +41,11 @@ public class CheckingAccount extends Account {
             // Checking suffi bal
             if((amount+FEE) <= balance) {
 
-                System.out.printf("Amount of %.2f withdrawn from Account%n", amount);
+                System.out.printf("Amount of %.2f withdrawn from Account\n", amount);
                 balance -= amount;
                 balance -= FEE;
-                System.out.printf("Fee of %.2f applied%n", FEE);
-                System.out.printf("Current Balance is: %.2f%n", balance);
+                System.out.printf("Fee of %.2f applied\n", FEE);
+                System.out.printf("Current Balance is: %.2f\n", balance);
             }
         } else {
             System.out.println("Negative amount cannot be withdrawn!");
